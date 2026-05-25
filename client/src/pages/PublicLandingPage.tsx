@@ -120,7 +120,7 @@ export function PublicLandingPage() {
               ))}
             </div>
             <ul className="mt-8 space-y-3 text-sm text-on-primary-container relative">
-              {['Invitación por código', 'Panel clínico completo', 'Diseño Warm Sanctum'].map((t) => (
+              {['Invitación por código', 'Panel clínico completo', 'Cuidando tu bienestar'].map((t) => (
                 <motion.li
                   key={t}
                   className="flex items-center gap-2"
