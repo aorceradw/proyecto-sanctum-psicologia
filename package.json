@@ -1,0 +1,20 @@
+{
+  "name": "sanctum-app",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sanctum — portal de bienestar y suite clínica",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
+    "free-port": "node scripts/free-port.mjs 3001",
+    "dev:client": "npm run dev --prefix client",
+    "dev:server": "npm run dev --prefix server",
+    "build": "npm run build --prefix client",
+    "build:prod": "npm run install:all && npm run build",
+    "start": "npm run start --prefix server",
+    "install:all": "npm install && npm install --prefix client && npm install --prefix server",
+    "db:reset": "npm run db:reset --prefix server"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}

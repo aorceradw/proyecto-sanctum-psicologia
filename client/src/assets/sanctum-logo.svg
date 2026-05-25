@@ -1,0 +1,26 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="100" cy="100" r="95" fill="#D4A574" />
+  
+  <!-- Brain shape with psi symbol -->
+  <g transform="translate(100, 100)">
+    <!-- Brain outline -->
+    <path d="M -30 -20 Q -45 -10 -45 10 Q -45 35 -25 45 Q -10 50 0 50 Q 10 50 25 45 Q 45 35 45 10 Q 45 -10 30 -20 Q 20 -28 0 -30 Q -20 -28 -30 -20 Z" fill="white"/>
+    
+    <!-- Psi symbol (ψ) -->
+    <g transform="scale(1.2)">
+      <!-- Main vertical line -->
+      <line x1="0" y1="-8" x2="0" y2="10" stroke="#D4A574" stroke-width="2.5" stroke-linecap="round"/>
+      
+      <!-- Left curve -->
+      <path d="M 0 -8 Q -6 -5 -8 2" stroke="#D4A574" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      
+      <!-- Right curve -->
+      <path d="M 0 -8 Q 6 -5 8 2" stroke="#D4A574" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      
+      <!-- Bottom curve connecting -->
+      <path d="M -8 2 Q -8 8 0 10" stroke="#D4A574" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <path d="M 8 2 Q 8 8 0 10" stroke="#D4A574" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    </g>
+  </g>
+</svg>

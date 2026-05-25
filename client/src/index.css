@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Libre+Caslon+Text:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0');
+
+@import 'tailwindcss';
+
+/* —— Warm Sanctum · paleta original de los diseños —— */
+@theme {
+  --color-primary: #002819;
+  --color-primary-container: #06402b;
+  --color-on-primary: #ffffff;
+  --color-on-primary-container: #77ac90;
+  --color-primary-fixed: #b8efd0;
+  --color-primary-fixed-dim: #9cd2b5;
+
+  --color-secondary: #775a19;
+  --color-secondary-container: #fed488;
+  --color-on-secondary-container: #785a1a;
+  --color-on-secondary-fixed-variant: #5d4201;
+  --color-secondary-fixed: #ffdea5;
+  --color-secondary-fixed-dim: #e9c176;
+
+  --color-background: #fff8f5;
+  --color-surface: #fff8f5;
+  --color-surface-container-low: #fbf2ed;
+  --color-surface-container: #f5ece7;
+  --color-surface-container-high: #efe6e2;
+  --color-surface-container-highest: #e9e1dc;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-variant: #e9e1dc;
+
+  --color-on-surface: #1e1b18;
+  --color-on-surface-variant: #404943;
+  --color-outline: #717973;
+  --color-outline-variant: #c0c9c1;
+
+  --color-error: #ba1a1a;
+  --color-error-container: #ffdad6;
+  --color-on-error-container: #93000a;
+
+  /* Alias semánticos (compatibles con componentes actuales) */
+  --color-clinical-50: #fff8f5;
+  --color-clinical-100: #fbf2ed;
+  --color-clinical-200: #e9e1dc;
+  --color-clinical-300: #c0c9c1;
+  --color-clinical-400: #717973;
+  --color-clinical-500: #404943;
+  --color-clinical-600: #404943;
+  --color-clinical-700: #1e1b18;
+  --color-clinical-800: #002819;
+  --color-clinical-900: #1e1b18;
+  --color-clinical-950: #002819;
+
+  --color-accent: #002819;
+  --color-accent-light: #b8efd0;
+  --color-accent-dark: #06402b;
+  --color-success: #356850;
+  --color-success-light: #b8efd0;
+  --color-warning: #775a19;
+  --color-warning-light: #ffdea5;
+  --color-panic: #ba1a1a;
+  --color-panic-light: #ffdad6;
+  --color-panic-dark: #93000a;
+
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-serif: 'Libre Caslon Text', Georgia, serif;
+  --spacing-container-max: 1280px;
+  --spacing-gutter: 24px;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-sans);
+    @apply antialiased text-on-surface bg-background;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+  .text-display {
+    font-size: 1.75rem;
+    line-height: 1.25;
+  }
+  @media (min-width: 768px) {
+    .text-display { font-size: 2.25rem; }
+  }
+
+  .card-clinical {
+    @apply bg-surface-container-lowest rounded-2xl border border-outline-variant/30 shadow-sm;
+  }
+  .card-clinical-hover {
+    @apply bg-surface-container-lowest rounded-2xl border border-outline-variant/30 shadow-sm
+      transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 hover:border-secondary/40 hover:-translate-y-1;
+  }
+  .card-glass {
+    @apply rounded-2xl border border-white/40 bg-surface-container-lowest/80 backdrop-blur-md shadow-lg shadow-primary/5;
+  }
+  .hero-gradient {
+    background: linear-gradient(135deg, #002819 0%, #06402b 45%, #356850 100%);
+  }
+  .hero-gradient-soft {
+    background: linear-gradient(180deg, #fff8f5 0%, #fbf2ed 50%, #fff8f5 100%);
+  }
+  .text-gradient-gold {
+    background: linear-gradient(90deg, #775a19, #e9c176);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .glow-orb {
+    @apply absolute rounded-full blur-3xl pointer-events-none;
+    animation: floatOrb 8s ease-in-out infinite;
+  }
+  @keyframes floatOrb {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(20px, -20px) scale(1.05); }
+  }
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 222, 165, 0.25) 50%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 3s ease-in-out infinite;
+  }
+  @keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-primary text-on-primary font-semibold text-sm
+      hover:bg-primary-container active:scale-[0.98] transition-all duration-200 disabled:opacity-50
+      shadow-sm shadow-primary/10;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl border border-secondary/50 bg-surface text-primary font-semibold text-sm
+      hover:bg-secondary-fixed/30 active:scale-[0.98] transition-all duration-200;
+  }
+  .btn-panic {
+    @apply inline-flex items-center justify-center gap-2 font-semibold text-sm text-on-primary
+      bg-error hover:bg-on-error-container shadow-lg shadow-error/25 active:scale-[0.98] transition-all duration-200;
+  }
+
+  .input-clinical {
+    @apply w-full rounded-xl border border-outline-variant/60 bg-surface px-4 py-3 text-sm text-on-surface
+      placeholder:text-on-surface-variant/50 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-shadow;
+  }
+
+  .badge-info {
+    @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-secondary-fixed/50 text-on-secondary-container;
+  }
+  .badge-risk {
+    @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-error-container text-on-error-container;
+  }
+  .badge-ok {
+    @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-primary-fixed/40 text-primary;
+  }
+  .badge-warn {
+    @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-secondary-container/60 text-on-secondary-container;
+  }
+
+  .nav-active-client {
+    @apply text-on-secondary-fixed-variant font-bold bg-secondary-fixed/40;
+  }
+
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
+  .material-symbols-outlined.fill {
+    font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
+
+  .animate-breathe {
+    animation: breathe 4s ease-in-out infinite;
+  }
+  @keyframes breathe {
+    0%, 100% { transform: scale(1); opacity: 0.85; }
+    50% { transform: scale(1.12); opacity: 1; }
+  }
+
+  .animate-pulse-ring {
+    animation: pulseRing 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  @keyframes pulseRing {
+    0%, 100% { transform: scale(1); opacity: 0.6; }
+    50% { transform: scale(1.08); opacity: 1; }
+  }
+
+  .max-w-container-max {
+    max-width: var(--spacing-container-max);
+  }
+
+  .bg-watermark-subtle {
+    background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCmNngz8O1iA8dN6J6osr-1CQROFjQjU5rVrOXjHkLMCZdgM9YTkrXbjrABp_ANMEFkmuvjS_xiMqLsAr975YyiQwf9zWUkkHD_fUMr28xj84oOAODIa0yvBst2BVlXXQb7KYLIXZ86k53WriycyfI9Zoss1FRWAxdBgr_Z1wONspbA8769tOOFLKlS5MQjm0isxqwYSeKsOHgLsLEnHSgoSdkPEZ1CmUmf6O1muiSqLJAY5DINtFtmUHLAPgQ8pBjn399KAQJmgn7_');
+    background-repeat: no-repeat;
+    background-position: center 20%;
+    background-size: 45%;
+    opacity: 0.04;
+    pointer-events: none;
+  }
+}
