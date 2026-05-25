@@ -6,6 +6,7 @@ import { Icon } from '../../components/Icon';
 import { PageHeader } from '../../components/PageHeader';
 import { PageLoader } from '../../components/LoadingSkeleton';
 import { AnimatedPage, AnimatedProgress, MotionCard, StaggerItem, StaggerList } from '../../components/motion';
+import Chatbot from '../../components/Chatbot';
 
 interface Dashboard {
   greeting: string;
@@ -18,6 +19,7 @@ interface Dashboard {
 
 export function ClientHomePage() {
   const [data, setData] = useState<Dashboard | null>(null);
+  const [isChatOpen, setIsChatOpen] = useState(false);
 
   useEffect(() => {
     apiFetch<Dashboard>('/api/patient/dashboard')
@@ -146,6 +148,24 @@ export function ClientHomePage() {
           </motion.div>
         ))}
       </div>
+
+      {/* Chat FAB Button */}
+      {!isChatOpen && (
+        <button
+          onClick={() => setIsChatOpen(true)}
+          className="chat-fab"
+          aria-label="Open AI assistant"
+        >
+          <Icon name="sparkles" />
+        </button>
+      )}
+
+      {/* Chatbot Component */}
+      <Chatbot
+        userRole="patient"
+        isOpen={isChatOpen}
+        onClose={() => setIsChatOpen(false)}
+      />
     </AnimatedPage>
   );
 }
