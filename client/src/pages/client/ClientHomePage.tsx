@@ -220,7 +220,7 @@ export function ClientHomePage() {
                 Escribir ahora <Icon name="arrow_forward" className="text-xs" />
               </Link>
             </div>
-          </div>
+          </motion.div>
         </StaggerItem>
       </StaggerList>
     </AnimatedPage>
