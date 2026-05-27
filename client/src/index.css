@@ -156,7 +156,7 @@
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-primary text-on-primary font-semibold text-sm transition-all duration-200 disabled:opacity-50 shadow-md shadow-primary/20 relative overflow-hidden group;
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-primary text-on-primary font-semibold text-sm transition-all duration-200 disabled:opacity-50 shadow-md shadow-primary/20 relative overflow-hidden;
   }
 
   .btn-primary:hover:not(:disabled) {

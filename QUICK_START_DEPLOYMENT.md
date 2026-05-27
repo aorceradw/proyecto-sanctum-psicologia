@@ -1,6 +1,0 @@
-# ⚠️ ARCHIVADO - Ver DEPLOYMENT.md
-
-Esta documentación ha sido consolidada en **[DEPLOYMENT.md](./DEPLOYMENT.md)**
-
-Consulta ese archivo para el inicio rápido.
-
