@@ -83,9 +83,11 @@ export function PsychologistLayout() {
       <div className="flex-1 lg:ml-64 flex flex-col min-h-screen">
         <header className="lg:hidden sticky top-0 z-30 bg-background/95 backdrop-blur border-b border-outline-variant/30 px-4 h-14 flex items-center justify-between">
           <span className="font-bold text-primary text-lg">Sanctum</span>
-          <NavLink to="/psicologo/cuenta" className="p-2 text-on-surface-variant">
-            <Icon name="settings" />
-          </NavLink>
+          <div className="flex items-center gap-2">
+            <NavLink to="/psicologo/cuenta" className="p-2 text-on-surface-variant">
+              <Icon name="settings" />
+            </NavLink>
+          </div>
         </header>
 
         <main className="flex-1 p-4 lg:p-8 max-w-container-max mx-auto w-full pb-24 lg:pb-8">
@@ -115,6 +117,7 @@ export function PsychologistLayout() {
           </div>
         </nav>
       </div>
+
     </div>
   );
 }

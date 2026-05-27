@@ -9,7 +9,6 @@ import authRoutes from './routes/auth.js';
 import patientRoutes from './routes/patient.js';
 import professionalRoutes from './routes/professional.js';
 import publicRoutes from './routes/public.js';
-import aiRoutes from './routes/ai.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PORT = process.env.PORT || 3001;
@@ -52,7 +51,6 @@ app.use('/api/auth', authRoutes);
 app.use('/api/public', publicRoutes);
 app.use('/api/patient', patientRoutes);
 app.use('/api/professional', professionalRoutes);
-app.use('/api/ai', aiRoutes);
 
 // Producción: servir el build del cliente si existe
 const clientDist = path.join(__dirname, '..', 'client', 'dist');

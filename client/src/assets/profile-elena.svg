@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+  <circle cx="60" cy="60" r="60" fill="#e0e7ff" />
+  <!-- Head -->
+  <circle cx="60" cy="40" r="18" fill="#c7d2fe" />
+  <!-- Hair -->
+  <path d="M42 32 Q42 18 60 16 Q78 18 78 32" fill="#8b5cf6" />
+  <!-- Face -->
+  <circle cx="55" cy="38" r="2" fill="#1f2937" />
+  <circle cx="65" cy="38" r="2" fill="#1f2937" />
+  <path d="M58 43 Q60 44 62 43" stroke="#1f2937" stroke-width="1.5" fill="none" stroke-linecap="round" />
+  <!-- Body (Therapist/Professional) -->
+  <path d="M42 60 L78 60 Q78 72 60 80 Q42 72 42 60" fill="#c7d2fe" />
+  <!-- Stethoscope -->
+  <path d="M50 65 Q55 70 60 70 Q65 70 70 65" stroke="#6366f1" stroke-width="2" fill="none" stroke-linecap="round" />
+</svg>

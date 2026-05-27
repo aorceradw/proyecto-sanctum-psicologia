@@ -82,10 +82,12 @@ export function ClientLayout() {
       <div className="flex-1 lg:ml-72 flex flex-col min-h-screen relative z-10">
         <header className="sticky top-0 z-30 bg-background/95 backdrop-blur border-b border-outline-variant/30 px-4 lg:px-8 h-14 flex items-center justify-between">
           <span className="font-bold text-primary text-lg">Sanctum</span>
-          <button type="button" onClick={() => setPanicOpen(true)} className="btn-panic px-4 py-2 rounded-lg text-sm">
-            <Icon name="emergency" />
-            Crisis
-          </button>
+          <div className="flex items-center gap-2">
+              <button type="button" onClick={() => setPanicOpen(true)} className="btn-panic px-4 py-2 rounded-lg text-sm">
+              <Icon name="emergency" />
+              Crisis
+            </button>
+          </div>
         </header>
 
         <main className="flex-1 p-4 md:p-8 max-w-container-max mx-auto w-full pb-28 lg:pb-8">

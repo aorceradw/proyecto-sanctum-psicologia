@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Icon } from '../components/Icon';
 import sanctumLogo from '../assets/sanctum-logo.svg';
+import therapyImage from '../assets/therapy-session.jpg';
+import psychologistImage from '../assets/psychologist.jpg';
+import reflectionImage from '../assets/reflection.jpg';
 
 interface PublicInfo {
   name: string;
@@ -15,6 +18,24 @@ const steps = [
   { n: '1', title: 'Regístrate', desc: 'Psicólogo/a o paciente con código de invitación' },
   { n: '2', title: 'Conecta', desc: 'Paciente y terapeuta quedan vinculados al instante' },
   { n: '3', title: 'Acompaña', desc: 'Tareas, diario, ánimo y citas entre sesiones' },
+];
+
+const galleryImages = [
+  {
+    title: 'Consulta en calma',
+    subtitle: 'Espacios seguros para la escucha y el crecimiento.',
+    src: therapyImage,
+  },
+  {
+    title: 'Acompañamiento profesional',
+    subtitle: 'Humaniza el proceso terapéutico con empatía.',
+    src: psychologistImage,
+  },
+  {
+    title: 'Momento de reflexión',
+    subtitle: 'Encuentra tranquilidad y confianza en cada paso.',
+    src: reflectionImage,
+  },
 ];
 
 export function PublicLandingPage() {
@@ -157,6 +178,42 @@ export function PublicLandingPage() {
                 </div>
                 <h3 className="font-semibold text-primary text-lg">{s.title}</h3>
                 <p className="text-sm text-on-surface-variant mt-2">{s.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="relative z-10 py-20">
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 className="font-display text-2xl md:text-3xl text-primary text-center mb-4">
+            Un entorno más cálido
+          </h2>
+          <p className="text-center text-on-surface-variant max-w-2xl mx-auto mb-12">
+            Imágenes que conectan con el cuidado terapéutico, la calma y la confianza entre paciente y profesional.
+          </p>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {galleryImages.map((image) => (
+              <motion.div
+                key={image.title}
+                className="group overflow-hidden rounded-[2rem] border border-outline-variant/30 bg-surface shadow-xl shadow-primary/10"
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4 }}
+              >
+                <div className="relative h-72 overflow-hidden">
+                  <img
+                    src={image.src}
+                    alt={image.title}
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
+                </div>
+                <div className="p-5">
+                  <h3 className="font-semibold text-lg text-primary mb-2">{image.title}</h3>
+                  <p className="text-sm text-on-surface-variant">{image.subtitle}</p>
+                </div>
               </motion.div>
             ))}
           </div>

@@ -1,4 +1,5 @@
 const STORAGE_KEY = 'sanctum_auth';
+const API_BASE = import.meta.env.VITE_API_URL || '';
 
 function getToken(): string | null {
   try {
@@ -10,6 +11,11 @@ function getToken(): string | null {
   }
 }
 
+function buildUrl(path: string): string {
+  if (path.startsWith('http://') || path.startsWith('https://')) return path;
+  return `${API_BASE}${path}`;
+}
+
 export async function apiFetch<T = unknown>(path: string, options: RequestInit = {}): Promise<T> {
   const token = getToken();
   const headers = new Headers(options.headers);
@@ -18,7 +24,7 @@ export async function apiFetch<T = unknown>(path: string, options: RequestInit =
     headers.set('Content-Type', 'application/json');
   }
 
-  const res = await fetch(path, { ...options, headers });
+  const res = await fetch(buildUrl(path), { ...options, headers });
   if (!res.ok) {
     const data = await res.json().catch(() => ({}));
     throw new Error((data as { error?: string }).error || 'Error en la solicitud');
