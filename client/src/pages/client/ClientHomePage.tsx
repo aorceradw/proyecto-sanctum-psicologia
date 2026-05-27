@@ -6,6 +6,8 @@ import { Icon } from '../../components/Icon';
 import { PageHeader } from '../../components/PageHeader';
 import { PageLoader } from '../../components/LoadingSkeleton';
 import { AnimatedPage, AnimatedProgress, MotionCard, StaggerItem, StaggerList } from '../../components/motion';
+import meditationImg from '../../assets/meditation.jpg';
+import reflectionImg from '../../assets/reflection.jpg';
 
 interface Dashboard {
   greeting: string;
@@ -130,7 +132,7 @@ export function ClientHomePage() {
       </StaggerList>
 
       <h2 className="text-sm font-bold text-on-surface-variant uppercase tracking-wide mb-4">Tu progreso esta semana</h2>
-      <div className="card-glass p-6 space-y-5">
+      <div className="card-glass p-6 space-y-5 mb-10">
         {data.progress.map((p, i) => (
           <motion.div
             key={p.id}
@@ -146,6 +148,59 @@ export function ClientHomePage() {
           </motion.div>
         ))}
       </div>
+
+      <h2 className="text-sm font-bold text-on-surface-variant uppercase tracking-wide mb-4">Espacios para tu bienestar</h2>
+      <StaggerList className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <StaggerItem>
+          <div className="overflow-hidden rounded-2xl border border-outline-variant/30 shadow-lg shadow-primary/10">
+            <div className="h-48 overflow-hidden relative group">
+              <img
+                src={meditationImg}
+                alt="Meditación y calma"
+                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent" />
+            </div>
+            <div className="bg-surface-container p-5">
+              <h3 className="font-semibold text-primary mb-2 flex items-center gap-2">
+                <Icon name="air" />
+                Momentos de calma
+              </h3>
+              <p className="text-sm text-on-surface-variant mb-4">
+                Respiración guiada y técnicas de relajación para encontrar paz en cualquier momento.
+              </p>
+              <Link to="/cliente/respiracion" className="text-sm font-semibold text-secondary hover:underline flex items-center gap-1">
+                Practicar ahora <Icon name="arrow_forward" className="text-xs" />
+              </Link>
+            </div>
+          </div>
+        </StaggerItem>
+
+        <StaggerItem>
+          <div className="overflow-hidden rounded-2xl border border-outline-variant/30 shadow-lg shadow-secondary/10">
+            <div className="h-48 overflow-hidden relative group">
+              <img
+                src={reflectionImg}
+                alt="Reflexión personal"
+                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent" />
+            </div>
+            <div className="bg-surface-container p-5">
+              <h3 className="font-semibold text-primary mb-2 flex items-center gap-2">
+                <Icon name="edit_note" />
+                Tu diario personal
+              </h3>
+              <p className="text-sm text-on-surface-variant mb-4">
+                Espacio seguro para reflexionar, procesar emociones y seguir tu evolución.
+              </p>
+              <Link to="/cliente/registro" className="text-sm font-semibold text-secondary hover:underline flex items-center gap-1">
+                Escribir ahora <Icon name="arrow_forward" className="text-xs" />
+              </Link>
+            </div>
+          </div>
+        </StaggerItem>
+      </StaggerList>
     </AnimatedPage>
   );
 }

@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { apiFetch } from '../../api/api';
 import { InvitePanel } from '../../components/InvitePanel';
 import { StatCard } from '../../components/StatCard';
 import { Icon } from '../../components/Icon';
 import { PageHeader } from '../../components/PageHeader';
 import { AnimatedPage, AnimatedProgress, MotionCard, StaggerItem, StaggerList } from '../../components/motion';
+import therapyImage from '../../assets/therapy-session.jpg';
+import psychologistImage from '../../assets/psychologist.jpg';
 
 interface DashboardData {
   inviteCode?: string | null;
@@ -173,6 +176,65 @@ export function PsychologistDashboard() {
                 })}
               </div>
             )}
+          </div>
+        </StaggerItem>
+
+        <StaggerItem className="xl:col-span-12">
+          <h2 className="font-bold text-primary mb-4 flex items-center gap-2">
+            <Icon name="psychology" className="text-secondary" />
+            Recursos para tu práctica
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <motion.div
+              className="overflow-hidden rounded-2xl border border-outline-variant/30 shadow-lg shadow-primary/10"
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <div className="h-56 overflow-hidden relative group">
+                <img
+                  src={therapyImage}
+                  alt="Sesión de terapia"
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent" />
+              </div>
+              <div className="bg-surface-container p-5">
+                <h3 className="font-semibold text-primary mb-2">Entorno clínico seguro</h3>
+                <p className="text-sm text-on-surface-variant mb-4">
+                  Espacios virtuales diseñados con estándares de privacidad y confidencialidad clínica.
+                </p>
+                <Link to="/psicologo/pacientes" className="text-sm font-semibold text-secondary hover:underline flex items-center gap-1">
+                  Gestionar pacientes <Icon name="arrow_forward" className="text-xs" />
+                </Link>
+              </div>
+            </motion.div>
+
+            <motion.div
+              className="overflow-hidden rounded-2xl border border-outline-variant/30 shadow-lg shadow-secondary/10"
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+            >
+              <div className="h-56 overflow-hidden relative group">
+                <img
+                  src={psychologistImage}
+                  alt="Atención profesional"
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent" />
+              </div>
+              <div className="bg-surface-container p-5">
+                <h3 className="font-semibold text-primary mb-2">Seguimiento continuo</h3>
+                <p className="text-sm text-on-surface-variant mb-4">
+                  Panel completo para monitoreo del progreso y bienestar de tus pacientes.
+                </p>
+                <Link to="/psicologo" className="text-sm font-semibold text-secondary hover:underline flex items-center gap-1">
+                  Ver panel <Icon name="arrow_forward" className="text-xs" />
+                </Link>
+              </div>
+            </motion.div>
           </div>
         </StaggerItem>
       </StaggerList>
