@@ -179,57 +179,75 @@ export function PsychologistDashboard() {
         </StaggerItem>
 
         <StaggerItem className="xl:col-span-12">
-          <h2 className="font-bold text-primary mb-4 flex items-center gap-2">
+          <h2 className="font-bold text-primary mb-6 flex items-center gap-2">
             <Icon name="psychology" className="text-secondary" />
             Recursos para tu práctica
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <motion.div
-              className="overflow-hidden rounded-2xl border border-outline-variant/30 shadow-lg shadow-primary/10"
+              className="overflow-hidden rounded-3xl border-2 border-primary-fixed/50 shadow-xl shadow-primary/20 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/30 hover:border-primary-fixed/70 group cursor-pointer"
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
+              whileHover={{ y: -4 }}
             >
-              <div className="h-56 overflow-hidden relative group">
+              <div className="h-56 overflow-hidden relative bg-gradient-to-br from-primary-fixed/20 to-primary/10">
                 <img
                   src={therapyImage}
                   alt="Sesión de terapia"
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  className="h-full w-full object-cover transition-all duration-700 group-hover:scale-125 group-hover:rotate-1"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/5 to-black/50 mix-blend-multiply" />
+                <motion.div
+                  className="absolute top-4 right-4 bg-primary-fixed text-primary font-bold text-xs px-3 py-1.5 rounded-full flex items-center gap-1"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                >
+                  🏥 Clínica
+                </motion.div>
               </div>
-              <div className="bg-surface-container p-5">
-                <h3 className="font-semibold text-primary mb-2">Entorno clínico seguro</h3>
-                <p className="text-sm text-on-surface-variant mb-4">
+              <div className="bg-gradient-to-br from-surface-container to-surface-container-low p-6">
+                <h3 className="font-semibold text-lg text-primary mb-2">Entorno clínico seguro</h3>
+                <p className="text-sm text-on-surface-variant mb-5 leading-relaxed">
                   Espacios virtuales diseñados con estándares de privacidad y confidencialidad clínica.
                 </p>
-                <Link to="/psicologo/pacientes" className="text-sm font-semibold text-secondary hover:underline flex items-center gap-1">
+                <Link to="/psicologo/pacientes" className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-primary text-on-primary text-sm font-semibold hover:shadow-lg hover:shadow-primary/30 transition-all">
                   Gestionar pacientes <Icon name="arrow_forward" className="text-xs" />
                 </Link>
               </div>
             </motion.div>
 
             <motion.div
-              className="overflow-hidden rounded-2xl border border-outline-variant/30 shadow-lg shadow-secondary/10"
+              className="overflow-hidden rounded-3xl border-2 border-secondary-fixed/50 shadow-xl shadow-secondary/20 transition-all duration-300 hover:shadow-2xl hover:shadow-secondary/30 hover:border-secondary-fixed/70 group cursor-pointer"
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
+              whileHover={{ y: -4 }}
             >
-              <div className="h-56 overflow-hidden relative group">
+              <div className="h-56 overflow-hidden relative bg-gradient-to-br from-secondary-fixed/20 to-secondary/10">
                 <img
                   src={psychologistImage}
                   alt="Atención profesional"
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  className="h-full w-full object-cover transition-all duration-700 group-hover:scale-125 group-hover:-rotate-1"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/5 to-black/50 mix-blend-multiply" />
+                <motion.div
+                  className="absolute top-4 right-4 bg-secondary-fixed text-on-secondary-container font-bold text-xs px-3 py-1.5 rounded-full flex items-center gap-1"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                >
+                  👨‍⚕️ Práctica
+                </motion.div>
               </div>
-              <div className="bg-surface-container p-5">
-                <h3 className="font-semibold text-primary mb-2">Seguimiento continuo</h3>
-                <p className="text-sm text-on-surface-variant mb-4">
+              <div className="bg-gradient-to-br from-surface-container to-surface-container-low p-6">
+                <h3 className="font-semibold text-lg text-primary mb-2">Seguimiento continuo</h3>
+                <p className="text-sm text-on-surface-variant mb-5 leading-relaxed">
                   Panel completo para monitoreo del progreso y bienestar de tus pacientes.
                 </p>
-                <Link to="/psicologo" className="text-sm font-semibold text-secondary hover:underline flex items-center gap-1">
+                <Link to="/psicologo" className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-secondary text-on-secondary-container text-sm font-semibold hover:shadow-lg hover:shadow-secondary/30 transition-all">
                   Ver panel <Icon name="arrow_forward" className="text-xs" />
                 </Link>
               </div>
