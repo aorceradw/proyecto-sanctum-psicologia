@@ -1,5 +1,5 @@
 const STORAGE_KEY = 'sanctum_auth';
-const API_BASE = import.meta.env.VITE_API_URL || '';
+const API_BASE = (import.meta.env.VITE_API_URL || '').replace(/\/$/, ''); // Remove trailing slash
 
 function getToken(): string | null {
   try {
@@ -13,7 +13,9 @@ function getToken(): string | null {
 
 function buildUrl(path: string): string {
   if (path.startsWith('http://') || path.startsWith('https://')) return path;
-  return `${API_BASE}${path}`;
+  // Ensure single slash between API_BASE and path
+  const baseUrl = API_BASE ? `${API_BASE}/` : '';
+  return `${baseUrl}${path.replace(/^\//, '')}`;
 }
 
 export async function apiFetch<T = unknown>(path: string, options: RequestInit = {}): Promise<T> {
