@@ -11,6 +11,9 @@ yarn-error.log
 .env
 .env.local
 .env.*.local
+.env.production
+.env.development
+server/.env
 
 # IDE
 .vscode/
@@ -26,7 +29,8 @@ logs/
 *.log
 
 # Database
-*.db
+server/db/sanctum.db
+server/db/*.db
 *.sqlite
 *.sqlite3
 
@@ -37,3 +41,4 @@ temp/
 # OS
 .DS_Store
 Thumbs.db
+

@@ -39,16 +39,29 @@ export function PsychologistLayout() {
                 to={item.to}
                 end={item.end}
                 className={({ isActive }) =>
-                  `flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all ${isActive
-                    ? 'bg-primary text-on-primary shadow-sm'
-                    : 'text-on-surface-variant hover:bg-surface-container'
+                  `flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-300 relative group ${isActive
+                    ? 'bg-primary text-on-primary shadow-lg shadow-primary/30 scale-105 translate-x-1'
+                    : 'text-on-surface-variant hover:bg-surface-container/60 hover:translate-x-1'
                   }`
                 }
               >
                 {({ isActive }) => (
                   <>
-                    <Icon name={item.icon} filled={isActive} />
-                    {item.label}
+                    {isActive && (
+                      <motion.div
+                        className="absolute left-0 top-0 bottom-0 w-1 bg-secondary rounded-r-lg"
+                        layoutId="active-nav"
+                        transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                      />
+                    )}
+                    <motion.div
+                      initial={{ scale: 1 }}
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <Icon name={item.icon} filled={isActive} />
+                    </motion.div>
+                    <span>{item.label}</span>
                   </>
                 )}
               </NavLink>

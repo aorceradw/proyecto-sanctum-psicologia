@@ -11,6 +11,7 @@
     "build": "npm run build --prefix client",
     "build:prod": "npm run install:all && npm run build",
     "start": "npm run start --prefix server",
+    "start:prod": "NODE_ENV=production npm run start --prefix server",
     "install:all": "npm install && npm install --prefix client && npm install --prefix server",
     "db:reset": "npm run db:reset --prefix server"
   },

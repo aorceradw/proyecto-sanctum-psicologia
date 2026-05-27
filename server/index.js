@@ -12,8 +12,10 @@ import publicRoutes from './routes/public.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PORT = process.env.PORT || 3001;
+const HOST = process.env.HOST || 'localhost';
 const CLIENT_ORIGIN = process.env.CLIENT_ORIGIN || 'http://localhost:5173';
 const RENDER_URL = process.env.RENDER_EXTERNAL_URL;
+const NODE_ENV = process.env.NODE_ENV || 'development';
 
 try {
   initDatabase();
@@ -29,6 +31,8 @@ const allowedOrigins = [
   CLIENT_ORIGIN,
   'http://127.0.0.1:5173',
   'http://localhost:5173',
+  'http://192.168.2.150',
+  'http://192.168.2.150:3001',
 ];
 if (RENDER_URL) allowedOrigins.push(RENDER_URL);
 
@@ -44,7 +48,7 @@ app.use(
 app.use(express.json());
 
 app.get('/api/health', (_req, res) => {
-  res.json({ status: 'ok', app: 'Sanctum API', database: true });
+  res.json({ status: 'ok', app: 'Sanctum API', database: true, environment: NODE_ENV });
 });
 
 app.use('/api/auth', authRoutes);
@@ -64,8 +68,10 @@ if (fs.existsSync(clientDist)) {
   });
 }
 
-const server = app.listen(PORT, () => {
-  console.log(`Sanctum API → http://localhost:${PORT}`);
+const server = app.listen(PORT, HOST, () => {
+  console.log(`✓ Sanctum API corriendo en ${NODE_ENV} mode`);
+  console.log(`✓ http://${HOST}:${PORT}`);
+  console.log(`✓ Cliente: ${CLIENT_ORIGIN}`);
 });
 
 server.on('error', (err) => {

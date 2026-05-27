@@ -2,5 +2,5 @@
 
 Esta documentación ha sido consolidada en **[DEPLOYMENT.md](./DEPLOYMENT.md)**
 
-Consulta ese archivo para el inicio rápido.
+Por favor, consulta ese archivo para toda la información sobre despliegue.
 

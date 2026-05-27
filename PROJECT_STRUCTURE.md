@@ -2,5 +2,5 @@
 
 Esta documentación ha sido consolidada en **[DEPLOYMENT.md](./DEPLOYMENT.md)**
 
-Consulta ese archivo para el inicio rápido.
+La estructura del proyecto se encuentra descrita en ese archivo.
 

@@ -156,19 +156,80 @@
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-primary text-on-primary font-semibold text-sm hover:bg-primary-container active:scale-[0.98] transition-all duration-200 disabled:opacity-50 shadow-sm shadow-primary/10;
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-primary text-on-primary font-semibold text-sm transition-all duration-200 disabled:opacity-50 shadow-md shadow-primary/20 relative overflow-hidden group;
+  }
+
+  .btn-primary:hover:not(:disabled) {
+    @apply bg-primary-container shadow-lg shadow-primary/30 -translate-y-0.5;
+  }
+
+  .btn-primary:active:not(:disabled) {
+    @apply scale-95 shadow-md;
+  }
+
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  .btn-primary:active::before {
+    animation: ripple 600ms ease-out;
+  }
+
+  @keyframes ripple {
+    to {
+      width: 500px;
+      height: 500px;
+      opacity: 0;
+    }
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl border border-secondary/50 bg-surface text-primary font-semibold text-sm hover:bg-secondary-fixed/30 active:scale-[0.98] transition-all duration-200;
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl border border-secondary/50 bg-surface text-primary font-semibold text-sm transition-all duration-200 hover:bg-secondary-fixed/20 hover:border-secondary/80 hover:shadow-md;
+  }
+
+  .btn-secondary:active:not(:disabled) {
+    @apply scale-95;
   }
 
   .btn-panic {
-    @apply inline-flex items-center justify-center gap-2 font-semibold text-sm text-on-primary bg-error hover:bg-on-error-container shadow-lg shadow-error/25 active:scale-[0.98] transition-all duration-200;
+    @apply inline-flex items-center justify-center gap-2 font-semibold text-sm text-on-primary bg-error transition-all duration-200 shadow-lg shadow-error/25 relative overflow-hidden;
+  }
+
+  .btn-panic:hover:not(:disabled) {
+    @apply bg-panic-dark shadow-xl shadow-error/40 -translate-y-0.5;
+  }
+
+  .btn-panic:active:not(:disabled) {
+    @apply scale-95;
   }
 
   .input-clinical {
-    @apply w-full rounded-xl border border-outline-variant/60 bg-surface px-4 py-3 text-sm text-on-surface placeholder:text-on-surface-variant/50 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-shadow;
+    @apply w-full rounded-xl border-2 border-outline-variant/60 bg-surface px-4 py-3 text-sm text-on-surface placeholder:text-on-surface-variant/50 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-200;
+  }
+
+  .input-clinical:focus {
+    @apply border-primary shadow-lg shadow-primary/10;
+  }
+
+  .input-clinical.input-error {
+    @apply border-error focus:border-error focus:ring-error/20;
+  }
+
+  .input-clinical.input-success {
+    @apply border-success focus:border-success focus:ring-success/20;
+  }
+
+  .input-clinical::placeholder {
+    @apply text-on-surface-variant/40;
   }
 
   .badge-info {
@@ -185,6 +246,152 @@
 
   .badge-warn {
     @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-secondary-container/60 text-on-secondary-container;
+  }
+
+  /* Elevation system - visual hierarchy */
+  .elevation-0 {
+    @apply shadow-none;
+  }
+
+  .elevation-1 {
+    @apply shadow-sm shadow-black/5;
+  }
+
+  .elevation-2 {
+    @apply shadow-md shadow-black/8;
+  }
+
+  .elevation-3 {
+    @apply shadow-lg shadow-black/10;
+  }
+
+  .elevation-4 {
+    @apply shadow-xl shadow-black/12;
+  }
+
+  /* Empty states */
+  .empty-state {
+    @apply flex flex-col items-center justify-center py-12 px-6 text-center;
+  }
+
+  .empty-state-icon {
+    @apply text-5xl text-on-surface-variant/30 mb-4;
+  }
+
+  .empty-state-title {
+    @apply font-semibold text-lg text-on-surface mb-2;
+  }
+
+  .empty-state-desc {
+    @apply text-sm text-on-surface-variant max-w-sm;
+  }
+
+  /* Loading states */
+  .loading-spinner {
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .skeleton-pulse {
+    animation: skeleton-loading 1.5s ease-in-out infinite;
+  }
+
+  @keyframes skeleton-loading {
+
+    0%,
+    100% {
+      opacity: 0.7;
+    }
+
+    50% {
+      opacity: 1;
+    }
+  }
+
+  /* Form validation feedback */
+  .form-field-error {
+    @apply border-error/60 focus:border-error focus:ring-error/20;
+  }
+
+  .form-field-success {
+    @apply border-success/60 focus:border-success focus:ring-success/20;
+  }
+
+  .form-error-text {
+    @apply text-xs text-error font-medium mt-1;
+  }
+
+  .form-success-text {
+    @apply text-xs text-success font-medium mt-1;
+  }
+
+  .form-hint-text {
+    @apply text-xs text-on-surface-variant mt-1;
+  }
+
+  /* Navigation active state */
+  .nav-active-client {
+    @apply text-on-secondary-fixed-variant font-bold bg-secondary-fixed/40;
+  }
+
+  .nav-active-pro {
+    @apply text-on-primary font-bold bg-primary shadow-md shadow-primary/20 translate-x-1;
+  }
+
+  /* Card elevation on interaction */
+  .card-interactive {
+    @apply transition-all duration-300 cursor-pointer hover:shadow-lg hover:shadow-primary/10;
+  }
+
+  .card-interactive:active {
+    @apply scale-98;
+  }
+
+  /* Success checkmark animation */
+  .checkmark-success {
+    animation: checkmark-bounce 0.6s ease-out;
+  }
+
+  @keyframes checkmark-bounce {
+    0% {
+      transform: scale(0) rotate(-45deg);
+      opacity: 0;
+    }
+
+    50% {
+      transform: scale(1.2) rotate(10deg);
+    }
+
+    100% {
+      transform: scale(1) rotate(0deg);
+      opacity: 1;
+    }
+  }
+
+  /* Task completion animation */
+  .task-complete {
+    animation: task-complete 0.5s ease-out forwards;
+  }
+
+  @keyframes task-complete {
+    0% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    100% {
+      opacity: 0.5;
+      transform: translateX(20px);
+    }
   }
 
   .nav-active-client {

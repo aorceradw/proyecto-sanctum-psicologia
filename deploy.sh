@@ -1,23 +1,9 @@
 #!/bin/bash
-# deploy.sh - Script rápido de deployment
+# ⚠️ ARCHIVADO
 
-echo "🚀 Sanctum - Deploy Script"
-echo "=========================="
-echo ""
-
-# Check git
-if ! git status > /dev/null 2>&1; then
-    echo "❌ Git no inicializado"
-    exit 1
-fi
-
-BRANCH=$(git rev-parse --abbrev-ref HEAD)
-if [ "$BRANCH" != "main" ]; then
-    echo "⚠️ Estás en rama $BRANCH, pero deberías estar en main"
-    git branch -M main
-fi
-
-echo "📋 Status actual:"
+# Este script ha sido reemplazado por build-deploy.sh
+# Uso: ./build-deploy.sh [user@host:/path]
+# Para más información: cat DEPLOYMENT.md
 git status --short | head -10
 
 echo ""

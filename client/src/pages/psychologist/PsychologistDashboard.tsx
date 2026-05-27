@@ -108,11 +108,10 @@ export function PsychologistDashboard() {
                 {data.alerts.map((a) => (
                   <div
                     key={a.patientId || a.patient}
-                    className={`p-3 rounded-lg border text-sm ${
-                      a.severity === 'error'
+                    className={`p-3 rounded-lg border text-sm ${a.severity === 'error'
                         ? 'bg-error-container/30 border-error/20'
                         : 'bg-warning-container/30 border-outline-variant/30'
-                    }`}
+                      }`}
                   >
                     <p className="font-semibold">{a.patient}</p>
                     <p className="text-on-surface-variant mt-1">{a.text}</p>

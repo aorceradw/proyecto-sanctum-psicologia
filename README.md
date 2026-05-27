@@ -1,62 +1,150 @@
-# Sanctum — Portal de bienestar terapéutico
+# 🏥 Sanctum - Portal de Bienestar Terapéutico
 
-Aplicación web con **base de datos SQLite**, **autenticación JWT** y **dos portales separados** (paciente y psicólogo/a), más una **página pública** para visitantes.
+Sistema integral de comunicación y seguimiento clínico entre pacientes y psicólogos.
 
-## Registro de usuarios reales
+## 🎯 Características
 
-| Quién | Cómo |
-|-------|------|
-| **Psicólogo/a (tú)** | `/crear-cuenta` → Soy psicólogo/a → en el panel verás tu **código de invitación** |
-| **Paciente / cliente** | `/crear-cuenta` → Soy paciente → introduce el código que le diste |
+- **Panel de Pacientes**: Diario personal, seguimiento de ánimo, tareas terapéuticas
+- **Panel de Psicólogos**: Gestión de pacientes, seguimiento clínico, alertas de riesgo
+- **Autenticación Segura**: JWT + bcrypt
+- **Base de Datos**: SQLite (local, portable)
+- **Interfaz Moderna**: React 19 + Framer Motion + Tailwind CSS
+- **Responsive**: Mobile-first design
 
-Detalle del flujo: ver `COMO-FUNCIONA.md`.
+## ⚡ Inicio Rápido
 
-Datos demo opcionales (solo si la BD está vacía): `elena@ejemplo.com` / `doctor@sanctum.health` — `sanctum123`
-
-## Funciones
-
-**Público**
-- Presentación de Sanctum y enlaces a inicio de sesión
-
-**Paciente**
-- Panel con progreso y próxima cita (desde BD)
-- Diario personal (guardado en BD)
-- Check-in de ánimo
-- Tareas con celebración al completar
-- Respiración y botón de crisis en el header
-
-**Psicólogo**
-- Panel con métricas, alertas y agenda
-- Directorio de sus pacientes
-- Expediente: diario del paciente y notas clínicas
-
-## Inicio
+### Desarrollo Local
 
 ```bash
-cd sanctum-app
+# Instalar dependencias
 npm run install:all
-cp server/.env.example server/.env
+
+# Ejecutar en desarrollo
 npm run dev
+
+# Acceder a:
+# Frontend: http://localhost:5173
+# API: http://localhost:3001
 ```
 
-- App: http://localhost:5173  
-- API: http://localhost:3001  
-
-Reiniciar datos de ejemplo:
+### Producción (192.168.2.150)
 
 ```bash
-npm run db:reset --prefix server
+# Compilar
+npm run build:prod
+
+# Copiar al servidor
+rsync -avz --delete . user@192.168.2.150:/path/to/sanctum-app
+
+# En servidor: Instalar y ejecutar
+npm install --prefix server
+npm start
+
+# Acceder a: http://192.168.2.150:3001
 ```
 
-## Producción
+## 📚 Documentación
+
+- **[DEPLOYMENT.md](./DEPLOYMENT.md)** - Guía completa de despliegue
+- **[DEPLOYMENT_GUIDE.md](./DEPLOYMENT_GUIDE.md)** - Información archivada (ver DEPLOYMENT.md)
+- **[COMO-FUNCIONA.md](./COMO-FUNCIONA.md)** - Funcionamiento técnico
+
+## 📁 Estructura
+
+```
+sanctum-app/
+├── client/          # Frontend React + Vite
+├── server/          # Backend Express + SQLite
+├── scripts/         # Utilidades
+├── .env.*           # Configuraciones
+├── build-deploy.sh  # Script de deployment
+└── DEPLOYMENT.md    # Guía de despliegue
+```
+
+## 🛠️ Scripts npm
 
 ```bash
-npm run build
-npm run start
+npm run dev              # Desarrollo
+npm run build           # Compilar cliente
+npm run build:prod      # Build producción completo
+npm start               # Iniciar servidor
+npm run install:all     # Instalar todas las deps
+npm run db:reset        # Resetear base de datos
+npm run free-port       # Liberar puerto 3001
 ```
 
-El servidor sirve el build del cliente y la API en el mismo puerto.
+## 🔧 Configuración
 
-## Stack
+### Variables de Entorno
 
-React 19 · TypeScript · Vite · Tailwind v4 · Framer Motion · Express · SQLite · JWT
+**`.env.production`** (servidor)
+```env
+NODE_ENV=production
+PORT=3001
+HOST=0.0.0.0
+CLIENT_ORIGIN=http://192.168.2.150:3001
+```
+
+**`client/.env.production`** (cliente)
+```env
+VITE_API_URL=http://192.168.2.150:3001
+```
+
+## 🚀 Despliegue Automático
+
+```bash
+# Script unificado
+./build-deploy.sh user@192.168.2.150:/path/to/app
+```
+
+## 🐳 Docker (Alternativa)
+
+```bash
+docker-compose up -d
+# Acceder a: http://localhost:3001
+```
+
+## 🔒 Seguridad
+
+- ✅ Autenticación JWT
+- ✅ Contraseñas bcrypt
+- ✅ CORS configurado
+- ✅ Variables .env protegidas
+- ✅ SQLite encriptado
+
+## 📊 Stack Tecnológico
+
+**Frontend:**
+- React 19
+- Vite
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+
+**Backend:**
+- Express.js
+- SQLite3
+- JWT
+- bcryptjs
+
+**DevOps:**
+- Docker
+- Node.js 22.5+
+- npm
+
+## ✅ Verificación
+
+```bash
+curl http://192.168.2.150:3001/api/health
+# {"status":"ok","app":"Sanctum API","database":true,"environment":"production"}
+```
+
+## 📞 Soporte
+
+Ver [DEPLOYMENT.md](./DEPLOYMENT.md) para troubleshooting y más información.
+
+---
+
+**Versión**: 1.0.0  
+**Licencia**: Propietaria  
+**Última actualización**: May 2026
