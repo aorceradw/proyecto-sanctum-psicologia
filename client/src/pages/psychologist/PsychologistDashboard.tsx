@@ -7,8 +7,14 @@ import { StatCard } from '../../components/StatCard';
 import { Icon } from '../../components/Icon';
 import { PageHeader } from '../../components/PageHeader';
 import { AnimatedPage, AnimatedProgress, MotionCard, StaggerItem, StaggerList } from '../../components/motion';
-import therapyImage from '../../assets/therapy-session.jpg';
-import psychologistImage from '../../assets/psychologist.jpg';
+
+// Imágenes de Unsplash - Psicología Clínica
+const THERAPY_IMAGES = {
+  therapy: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&h=400&fit=crop&q=80',
+  psychologist: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=800&h=400&fit=crop&q=80',
+  counseling: 'https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=800&h=400&fit=crop&q=80',
+  wellbeing: 'https://images.unsplash.com/photo-1516979187457-635ffe35ff70?w=800&h=400&fit=crop&q=80',
+};
 
 interface DashboardData {
   inviteCode?: string | null;
@@ -193,7 +199,7 @@ export function PsychologistDashboard() {
             >
               <div className="h-56 overflow-hidden relative bg-gradient-to-br from-primary-fixed/20 to-primary/10">
                 <img
-                  src={therapyImage}
+                  src={THERAPY_IMAGES.therapy}
                   alt="Sesión de terapia"
                   className="h-full w-full object-cover transition-all duration-700 group-hover:scale-125 group-hover:rotate-1"
                 />
@@ -228,7 +234,7 @@ export function PsychologistDashboard() {
             >
               <div className="h-56 overflow-hidden relative bg-gradient-to-br from-secondary-fixed/20 to-secondary/10">
                 <img
-                  src={psychologistImage}
+                  src={THERAPY_IMAGES.psychologist}
                   alt="Atención profesional"
                   className="h-full w-full object-cover transition-all duration-700 group-hover:scale-125 group-hover:-rotate-1"
                 />

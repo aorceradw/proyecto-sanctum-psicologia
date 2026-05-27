@@ -6,8 +6,14 @@ import { Icon } from '../../components/Icon';
 import { PageHeader } from '../../components/PageHeader';
 import { PageLoader } from '../../components/LoadingSkeleton';
 import { AnimatedPage, AnimatedProgress, MotionCard, StaggerItem, StaggerList } from '../../components/motion';
-import meditationImg from '../../assets/meditation.jpg';
-import reflectionImg from '../../assets/reflection.jpg';
+
+// Imágenes de Unsplash - Terapia y Bienestar
+const THERAPY_IMAGES = {
+  meditation: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=800&h=400&fit=crop&q=80',
+  journaling: 'https://images.unsplash.com/photo-1455849318169-8491cbf735a0?w=800&h=400&fit=crop&q=80',
+  therapy: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&h=400&fit=crop&q=80',
+  breathing: 'https://images.unsplash.com/photo-1545291026-faeb55f1724f?w=800&h=400&fit=crop&q=80',
+};
 
 interface Dashboard {
   greeting: string;
@@ -158,7 +164,7 @@ export function ClientHomePage() {
           >
             <div className="h-56 overflow-hidden relative bg-gradient-to-br from-primary-fixed/20 to-primary/10">
               <img
-                src={meditationImg}
+                src={THERAPY_IMAGES.meditation}
                 alt="Meditación y calma"
                 className="h-full w-full object-cover transition-all duration-700 group-hover:scale-125 group-hover:rotate-2"
               />
@@ -194,7 +200,7 @@ export function ClientHomePage() {
           >
             <div className="h-56 overflow-hidden relative bg-gradient-to-br from-secondary-fixed/30 to-secondary/10">
               <img
-                src={reflectionImg}
+                src={THERAPY_IMAGES.journaling}
                 alt="Reflexión personal"
                 className="h-full w-full object-cover transition-all duration-700 group-hover:scale-125 group-hover:-rotate-2"
               />
