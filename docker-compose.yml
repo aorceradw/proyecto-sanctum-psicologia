@@ -1,13 +1,22 @@
-version: '3.8'
-
 services:
   sanctum:
     build: .
+    container_name: sanctum-app
     ports:
       - "3001:3001"
     environment:
       NODE_ENV: production
       PORT: 3001
-      CLIENT_ORIGIN: http://localhost:3001
+      HOST: 0.0.0.0
+      CLIENT_ORIGIN: http://192.168.2.150:3001
+      VITE_API_URL: http://192.168.2.150:3001
     volumes:
       - ./server/db:/app/server/db
+      - ./dist:/app/dist
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3001/api/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
